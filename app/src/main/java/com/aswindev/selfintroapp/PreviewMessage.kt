@@ -14,6 +14,7 @@ data class PreviewMessage(
     val startDate: String?
 ) : Serializable {
     fun getFullJObDescription(): String =
+
         if (includeJunior) "a Junior $jobTitle" else "an $jobTitle"
 
     fun getAvailability() = if (immediateStart) "immediately" else "from $startDate"
