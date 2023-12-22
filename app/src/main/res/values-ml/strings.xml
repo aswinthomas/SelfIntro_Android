@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">സ്വയം ആമുഖ ആപ്പ്</string>
+    <string name="hint_contact_name">ബന്ധപ്പെടാനുള്ള പേര്</string>
+    <string name="hint_contact_number">ബന്ധപ്പെടേണ്ട നമ്പർ</string>
+    <string name="hint_my_display_name">എന്റെ ഡിസ്പ്ലേ പേര്</string>
+    <string name="check_box_text_include_junior">ജൂനിയർ ഉൾപ്പെടുത്തുക</string>
+    <string name="check_box_text_immediate_start">ഉടനടി ആരംഭം</string>
+    <string name="hint_available_from_date">തീയതി മുതൽ ലഭ്യമാണ്</string>
+    <string name="button_text_preview_message">പ്രിവ്യൂ സന്ദേശം</string>
+    <string name="button_text_send_message">സന്ദേശം അയയ്ക്കുക</string>
+</resources>

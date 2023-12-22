@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Application d\'auto-introduction</string>
+    <string name="hint_contact_name">Nom du contact</string>
+    <string name="hint_contact_number">Numéro de contact</string>
+    <string name="hint_my_display_name">Mon nom d\'affichage</string>
+    <string name="check_box_text_include_junior">Inclure Junior</string>
+    <string name="check_box_text_immediate_start">Démarrage immédiat</string>
+    <string name="hint_available_from_date">Disponible à partir de la date</string>
+    <string name="button_text_preview_message">Aperçu du message</string>
+    <string name="button_text_send_message">Envoyer le message</string>
+</resources>
