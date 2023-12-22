@@ -27,33 +27,25 @@ class MainActivity : AppCompatActivity() {
             onPreviewClicked()
         }
 
-        val spinnerValues: Array<String> = arrayOf("Engineer", "Technician", "Recruiter", "Engineering Manager")
-        val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, spinnerValues)
+        val spinnerValues: Array<String> =
+            arrayOf("Engineer", "Technician", "Recruiter", "Engineering Manager")
+        val spinnerAdapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, spinnerValues)
         binding.spinnerJobTitle.adapter = spinnerAdapter
     }
 
     private fun onPreviewClicked() {
-        val contactName = binding.editTextContactName.text.toString()
-        val contactNumber = binding.editTextContactNumber.text.toString()
-        val displayName = binding.editTextMyDisplayName.text.toString()
-        val includeJunior = binding.checkBoxJunior.isChecked
-        // kotlin does not know the following can be null, hence use '?'
-        val jobTitle = binding.spinnerJobTitle.selectedItem?.toString()
-        val immediateStart = binding.checkBoxImmediateStart.isChecked
-        val startDate = binding.editTextStartDate.text.toString()
-        Log.d("This is my Log tag", "Currently contactNameEditText is: $contactName")
-        val testString =
-            "Name: $contactName, Num: $contactNumber, Display Name: $displayName, Junior: $includeJunior, Title: $jobTitle, Immediate Start: $immediateStart, Start Date: $startDate"
-        Toast.makeText(this, testString, Toast.LENGTH_LONG).show()
-
+        val message = PreviewMessage(
+            binding.editTextContactName.text.toString(),
+            binding.editTextContactNumber.text.toString(),
+            binding.editTextMyDisplayName.text.toString(),
+            binding.checkBoxJunior.isChecked,
+            binding.spinnerJobTitle.selectedItem?.toString(),
+            binding.checkBoxImmediateStart.isChecked,
+            binding.editTextStartDate.text.toString()
+        )
         val previewActivityIntent = Intent(this, PreviewActivity::class.java)
-        previewActivityIntent.putExtra("Contact Name", contactName)
-        previewActivityIntent.putExtra("Contact Number", contactNumber)
-        previewActivityIntent.putExtra("Display Name", displayName)
-        previewActivityIntent.putExtra("Include Junior", includeJunior)
-        previewActivityIntent.putExtra("Job Title", jobTitle)
-        previewActivityIntent.putExtra("Immediate Start", immediateStart)
-        previewActivityIntent.putExtra("Start Date", startDate)
+        previewActivityIntent.putExtra("Message", message)
 
         startActivity(previewActivityIntent)
     }

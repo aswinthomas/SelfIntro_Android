@@ -1,9 +1,19 @@
 package com.aswindev.selfintroapp
 
+import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.aswindev.selfintroapp.databinding.ActivityPreviewBinding
+import java.io.Serializable
+
+fun <T: Serializable> Intent.intentSerializable(key: String, clazz: Class<T>): T? {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        this.getSerializableExtra(key, clazz)
+    } else {
+        this.getSerializableExtra(key) as T?
+    }
+}
 
 class PreviewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPreviewBinding
@@ -14,17 +24,25 @@ class PreviewActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val contactName = intent.getStringExtra("Contact Name")
-        val contactNumber = intent.getStringExtra("Contact Number")
-        val displayName = intent.getStringExtra("Display Name")
-        val includeJunior = intent.getBooleanExtra("Include Junior", false)
-        val jobTitle = intent.getStringExtra("Job Title")
-        val immediateStart = intent.getBooleanExtra("Immediate Start", false)
-        val startDate = intent.getStringExtra("Start Date")
+        val message: PreviewMessage = intent.intentSerializable("Message", PreviewMessage::class.java) as PreviewMessage
 
-        val testString =
-            "Name: $contactName, Num: $contactNumber, Display Name: $displayName, Junior: $includeJunior, Title: $jobTitle, Immediate Start: $immediateStart, Start Date: $startDate"
-        binding.textViewMessage.text = testString
+
+        val messagePreviewText = """
+            Hi ${message.contactName},
+            
+            My name is ${message.myDisplayName} and I am a ${message.getFullJObDescription()}.
+            
+            I have a portfolio of apps to demonstrate my technical skills that I can show you on request.
+            
+            I am able to start a new position ${message.getAvailability()}.
+            
+            Please get in touch if you have any suitable roles for me.
+            
+            Thanks and Regards
+        """.trimIndent()
+        binding.textViewMessage.text = messagePreviewText
 
     }
+
+
 }
