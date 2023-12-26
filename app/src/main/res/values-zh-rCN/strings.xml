@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">自我介绍应用程序</string>
+    <string name="hint_contact_name">联系人姓名</string>
+    <string name="hint_contact_number">联系电话</string>
+    <string name="hint_my_display_name">我的显示名称</string>
+    <string name="check_box_text_include_junior">包括初级</string>
+    <string name="check_box_text_immediate_start">立即开始</string>
+    <string name="hint_available_from_date">可用日期</string>
+    <string name="button_text_preview_message">预览消息</string>
+    <string name="button_text_send_message">发信息</string>
+</resources>
